@@ -4,6 +4,8 @@
   <!-- Remotes -->
   <remote  name="github"
            fetch="https://github.com" />
+  <remote  name="bb"
+           fetch="https://bitbucket.org" />
   <remote  name="aosp"
            fetch="https://android.googlesource.com"
            review="android-review.googlesource.com" />
@@ -19,7 +21,7 @@
            sync-j="4" />
 
   <!-- SoS Repo's -->
-  <project path="manifest" name="manifest" remote="sosrom" revision="n-mr2.1" />
+  <project path="manifest" name="manifest" remote="sosrom" revision="test" />
   <project path="changelog" name="changelog" remote="sosrom" revision="n-mr2.1" >
     <copyfile src="Changelog.txt" dest="Changelog.txt" />
   </project>
@@ -27,12 +29,10 @@
     <copyfile src="core/root.mk" dest="Makefile" />
   </project>
   <project path="build/kati" name="platform_build_kati" groups="pdk,tradefed" remote="sosrom" revision="n-mr2.1" />
-  <project path="frameworks/av" name="platform_frameworks_av" groups="pdk" remote="sosrom" revision="n-mr2.1" />
   <project path="frameworks/native" name="platform_frameworks_native" groups="pdk" remote="sosrom" revision="n-mr2.1" />
   <project path="frameworks/support" name="platform_frameworks_support" groups="pdk-cw-fs,pdk-fs" remote="sosrom" revision="n-mr2.1" />
   <project path="system/core" name="platform_system_core" groups="pdk" remote="sosrom" revision="n-mr2.1" />
-  <project path="system/sepolicy" name="platform_system_sepolicy" groups="pdk" remote="sosrom" revision="n-mr2.1" />
-  <project path="vendor/pure" name="platform_vendor_sos" remote="sosrom" revision="n-mr2.1" />
+  <project path="vendor/pure" name="platform_vendor_sos" remote="sosrom" revision="test" />
   <project path="frameworks/base" name="platform_frameworks_base" groups="pdk-cw-fs,pdk-fs" remote="sosrom" revision="n-mr2.1" />
   <project path="packages/apps/SixSettings" name="platform_packages_apps_SoSSettings" remote="sosrom" revision="n-mr2.1" />
   <project path="packages/apps/Settings" name="platform_packages_apps_Settings" groups="pdk-fs" remote="sosrom" revision="n-mr2.1" />
@@ -66,19 +66,32 @@
   <project path="external/busybox" name="android_external_busybox" remote="pure" revision="n-mr2" />
   <project path="system/vold" name="android_system_vold" groups="pdk" remote="pure" revision="n-mr2" />
 
+  <!-- Sooti Repo`s -->
+  <project name="Khaon/proprietary_vendor_samsung" path="vendor/samsung" remote="github" revision="master" />
+  <project name="omnirom/android_hardware_samsung_slsi_exynos5" path="hardware/samsung_slsi/exynos5" remote="github" revision="android-7.0" />
+  <project name="omnirom/android_external_stlport" path="external/stlport" remote="github" revision="android-7.0"/>
+  <project name="omnirom/android_hardware_broadcom_libbt" path="hardware/broadcom/libbt" remote="github" revision="android-7.1" />
+  <project name="sooti/android_system_sepolicy" path="system/sepolicy" remote="github" revision="aosp-7.1.2" />
+  <project name="omnirom/android_hardware_invensense" path="hardware/invensense" remote="github" revision="android-7.1" />
+  <project name="sooti/android_kernel_samsung_manta" path="kernel/samsung/manta" remote="github" revision="aosp-7.1.0" />
+  <project name="sooti/android_device_samsung_manta" path="device/samsung/manta" remote="github" revision="aosp-7.1" />
+  <project name="Khaon/android_external_f2fs-tools" path="external/f2fs-tools" remote="github" revision="master"/>
+  <project name="Khaon/android_external_e2fsprogs" path="external/e2fsprogs" remote="github" revision="master"/>
+  <project name="Khaon/arm-cortex_a15-linux-gnueabihf-linaro_4.7.4" path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.7" remote="github" revision="master"/>
+
   <!-- DUI Repo's -->
   <project path="packages/apps/DUI" name="platform_packages_apps_DUI" remote="sosrom" revision="n-mr2.1" />
   <project path="external/DUtils" name="platform_external_DUtils" remote="sosrom" revision="n-mr2.1" />
 
-  <!-- Shamu Source -->
+  <!-- Shamu Source
   <project path="device/moto/shamu" name="platform_device_moto_shamu" groups="device,shamu,broadcom_pdk,generic_fs,pdk" remote="sosrom" revision="n-mr2.1" />
   <project path="kernel/moto/shamu" name="platform_kernel_motorola_shamu" groups="device,shamu,broadcom_pdk,generic_fs,pdk" remote="sosrom" revision="n-mr2.1" />
-  <project path="vendor/moto" name="proprietary_vendor_moto" remote="pure" revision="n-mr2" />
+  <project path="vendor/moto" name="proprietary_vendor_moto" remote="pure" revision="n-mr2" /> -->
 
-  <!-- Angler Source -->
+  <!-- Angler Source
   <project path="device/huawei/angler" name="platform_device_huawei_angler" groups="device,angler,broadcom_pdk" remote="sosrom" revision="n-mr2.1" />
   <project path="kernel/huawei/angler" name="platform_kernel_huawei_angler" groups="device,angler,broadcom_pdk,pdk" remote="sosrom" revision="n-mr2.1" />
-  <project path="vendor/huawei" name="proprietary_vendor_huawei" remote="pure" revision="n-mr2" />
+  <project path="vendor/huawei" name="proprietary_vendor_huawei" remote="pure" revision="n-mr2" /> -->
 
   <!-- Google AOSP Repo's -->
   <project path="build/blueprint" name="platform/build/blueprint" groups="pdk,tradefed" />
@@ -152,7 +165,6 @@
   <project path="external/drm_gralloc" name="platform/external/drm_gralloc" groups="drm_gralloc,pdk-fs" />
   <project path="external/drm_hwcomposer" name="platform/external/drm_hwcomposer" groups="drm_hwcomposer,pdk-fs" />
   <project path="external/droiddriver" name="platform/external/droiddriver" groups="pdk" />
-  <project path="external/e2fsprogs" name="platform/external/e2fsprogs" groups="pdk" />
   <project path="external/easymock" name="platform/external/easymock" groups="pdk" />
   <project path="external/eclipse-basebuilder" name="platform/external/eclipse-basebuilder" groups="pdk-cw-fs,pdk-fs" />
   <project path="external/eclipse-windowbuilder" name="platform/external/eclipse-windowbuilder" groups="pdk" />
@@ -163,7 +175,6 @@
   <project path="external/esd" name="platform/external/esd" groups="pdk" />
   <project path="external/expat" name="platform/external/expat" groups="pdk" />
   <project path="external/eyes-free" name="platform/external/eyes-free" groups="pdk" />
-  <project path="external/f2fs-tools" name="platform/external/f2fs-tools" groups="pdk" />
   <project path="external/fdlibm" name="platform/external/fdlibm" groups="pdk" />
   <project path="external/fec" name="platform/external/fec" groups="pdk" />
   <project path="external/fio" name="platform/external/fio" groups="pdk" />
@@ -389,11 +400,9 @@
   <project path="frameworks/webview" name="platform/frameworks/webview" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/wilhelm" name="platform/frameworks/wilhelm" groups="pdk-cw-fs,pdk-fs" />
   <project path="hardware/akm" name="platform/hardware/akm" groups="pdk" />
-  <project path="hardware/broadcom/libbt" name="platform/hardware/broadcom/libbt" groups="pdk" />
   <project path="hardware/broadcom/wlan" name="platform/hardware/broadcom/wlan" groups="pdk,broadcom_wlan" />
   <project path="hardware/bsp/intel" name="platform/hardware/bsp/intel" groups="pdk" />
   <project path="hardware/google/apf" name="platform/hardware/google/apf" groups="pdk" />
-  <project path="hardware/invensense" name="platform/hardware/invensense" groups="invensense,pdk" />
   <project path="hardware/libhardware" name="platform/hardware/libhardware" groups="pdk" />
   <project path="hardware/libhardware_legacy" name="platform/hardware/libhardware_legacy" groups="pdk" />
   <project path="hardware/marvell/bt" name="platform/hardware/marvell/bt" groups="marvell_bt,pdk" />
